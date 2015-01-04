@@ -2,8 +2,7 @@ package tddPart2;
 
 public class WasRun extends TestCase {
  	boolean wasRun;
-	boolean wasSetUp;
-	String log;
+ 	String log;
  
  	public WasRun(String methodName) {
  		super(methodName);
@@ -11,17 +10,20 @@ public class WasRun extends TestCase {
  
  	public void testMethod() {
  		wasRun = true;
-		log = "testMethod ";
+ 		log += "testMethod ";
  	}
  	
  	public void setUp() {
  		wasRun = false;
-		wasSetUp = true;
-		log = "setUp ";
-	}
-	
-	public void tearDown() {
-		log = "tearDown "; 
+ 		log = "setUp ";
  	}
+ 	
+ 	public void tearDown() {
+ 		log += "tearDown "; 
+ 	}
+	
+	public void testBrokenMethod() {
+		throw new RuntimeException();
+	}
  
  }
