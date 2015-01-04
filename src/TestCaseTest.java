@@ -20,7 +20,6 @@ public class TestCaseTest extends TestCase {
 
 	public void testResult() {
  		WasRun test = new WasRun("testMethod");
--		TestResult result = test.run();
 		test.run( result );
  		System.out.println("1 run, 0 failed".equals(result.summary()));
  	}
