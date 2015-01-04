@@ -1,7 +1,7 @@
 package tddPart2;
 
 public class TestCaseTest extends TestCase {
-	WasRun test = null;
+ 	WasRun test = null;
  
  	public TestCaseTest(String methodName) {
  		super(methodName);
@@ -11,21 +11,23 @@ public class TestCaseTest extends TestCase {
 		test = new WasRun("testMethod");
 	}
  
- 	public void testRunning() {
-		WasRun test = new WasRun("testMethod");
-		System.out.println(test.wasRun);
- 		test.run();
- 		System.out.println(test.wasRun);
- 	}
-	
-	public void testSetUp() {
+	public void testRunning() {
 		test.run();
-		System.out.println(test.wasSetUp);
+		System.out.println(test.wasRun);
 	}
+	
+	public void testSetUp() {}
+	public void testTemplateMethod() {
+		WasRun test = new WasRun("testMethod");
+ 		test.run();
+		System.out.println(test.wasSetUp);
+		System.out.println(test.log.equals("setUp testMethod tearDown "));
+ 	}
  
  	public static void main(String[] args) {
- 		new TestCaseTest("testRunning").run();
+		new TestCaseTest("testRunning").run();
 		new TestCaseTest("testSetUp").run();
+		new TestCaseTest("testTemplateMethod").run();
  	}
  
  }
