@@ -1,6 +1,4 @@
-package tddPart2;
-
-import java.lang.reflect.Method;
+ import java.lang.reflect.Method;
  
  public class TestCase {
  
@@ -18,19 +16,21 @@ import java.lang.reflect.Method;
  
  	}
  
-	public TestResult run() {
-		TestResult result = new TestResult();
+ 	public TestResult run() {
+ 		TestResult result = new TestResult();
  		Class cls = this.getClass();
  		try {
  			this.setUp();
-			result.testStarted();
+ 			result.testStarted();
  			Method m = cls.getDeclaredMethod(methodName, null);
  			m.invoke(this);
- 			this.tearDown();
+-			this.tearDown();
  		} catch (Exception e) {
- 			e.printStackTrace();
+-			e.printStackTrace();
++			result.testFailed();
  		}
-		return result;
++		this.tearDown();
+ 		return result;
  	}
  
  }
