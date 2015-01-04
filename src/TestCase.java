@@ -10,8 +10,14 @@ public class TestCase {
 		this.methodName = methodName;
 	}
 	
+
 	public void setUp() {
 		
+
+	}
+	
+	public void tearDown() {
+
 	}
 
 	public void run() {
@@ -20,6 +26,7 @@ public class TestCase {
 			this.setUp();
 			Method m = cls.getDeclaredMethod(methodName, null);
 			m.invoke(this);
+			this.tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
